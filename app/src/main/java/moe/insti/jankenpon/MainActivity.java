@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private JanKenPon JanKenPon;
     private TextView textUser, textCpu, textResult;
 
+    //ボタンが押されてるかどうかを確認するリスナーの追加
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         paper.setOnClickListener(this);
     }
 
+    //結果を表示するメソッド
     public void showResult(String userAction) {
         String result;
         JanKenPon = new JanKenPon();
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textResult.setText("結果："+ result + "！");
     }
 
+    //ボタンが押されると結果を表示するメソッド
     @Override
     public void onClick(View view) {
         Button button = (Button) view;
