@@ -72,10 +72,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (result){
             case "勝ち":
                 updateResultData("win");
+                break;
             case "負け":
                 updateResultData("lose");
+                break;
             case "分け":
                 updateResultData("draw");
+                break;
         }
 
         // 結果の画像を設定する
