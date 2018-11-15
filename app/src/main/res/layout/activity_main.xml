@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/MyActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
 
     <LinearLayout
@@ -66,6 +76,7 @@
         android:id="@+id/resultImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5sp"
         android:contentDescription="CPUの出した手の画像"
         app:srcCompat="@android:color/background_light" />
 
