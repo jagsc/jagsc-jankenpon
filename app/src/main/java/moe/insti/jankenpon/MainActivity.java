@@ -42,20 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 画像をassetsから読み込み
         AssetManager assets = getResources().getAssets();
-
-        try {
-            InputStream inputStream = assets.open("rock.png");
-            rockBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-            inputStream = assets.open("scissors.png");
-            scissorsBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-            inputStream = assets.open("paper.png");
-            paperBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        rockBitmap = getBitmap(assets,"rock.png");
+        scissorsBitmap = getBitmap(assets,"scissors.png");
+        paperBitmap = getBitmap(assets,"paper.png");
     }
 
     //結果を表示するメソッド
@@ -98,5 +87,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showResult("パー");
                 break;
         }
+    }
+
+    public Bitmap getBitmap(AssetManager assets,String filename){
+        try (InputStream inputStream = assets.open(filename)){
+            return BitmapFactory.decodeStream(inputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
