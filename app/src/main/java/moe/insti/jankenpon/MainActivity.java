@@ -1,6 +1,8 @@
 package moe.insti.jankenpon;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textUser, textCpu, textResult;
     private Bitmap rockBitmap, scissorsBitmap, paperBitmap;
     private ImageView resultImageView;
-
+    private SharedPreferences data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rockBitmap = getBitmap(assets,"rock.png");
         scissorsBitmap = getBitmap(assets,"scissors.png");
         paperBitmap = getBitmap(assets,"paper.png");
+
+        data = getSharedPreferences("result", Context.MODE_PRIVATE);
     }
 
     //結果を表示するメソッド
@@ -64,6 +68,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textUser.setText("あなたは" + userAction + "を選択しました。");
         textCpu.setText("CPUが" + JanKenPon.randomAction + "を出しました。");
         textResult.setText("結果："+ result + "！");
+
+        switch (result){
+            case "勝ち":
+                updateResultData("win");
+            case "負け":
+                updateResultData("lose");
+            case "分け":
+                updateResultData("draw");
+        }
 
         // 結果の画像を設定する
         switch (JanKenPon.randomAction){
@@ -117,8 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setMessage("message")
-                .setTitle("title");
+        builder.setTitle("対戦結果")
+                .setMessage(getString(R.string.result_text,
+                        data.getInt("total",0),
+                        data.getInt("win",0),
+                        data.getInt("lose",0),
+                        data.getInt("draw",0)
+                        ));
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -128,6 +146,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setNeutralButton(R.string.reset, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences.Editor editor = data.edit();
+                editor.putInt("total",0);
+                editor.putInt("win",0);
+                editor.putInt("lose",0);
+                editor.putInt("draw",0);
+                editor.apply();
             }
         });
 
@@ -142,5 +166,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void updateResultData(String param){
+        SharedPreferences.Editor editor = data.edit();
+        editor.putInt("total",data.getInt("total",0) + 1);
+        editor.putInt(param,data.getInt(param,0) + 1);
+        editor.apply();
     }
 }

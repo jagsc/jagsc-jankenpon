@@ -3,4 +3,5 @@
     <string name="show_result">結果表示</string>
     <string name="ok">OK</string>
     <string name="reset">リセット</string>
+    <string name="result_text">対戦回数: %1$d\n勝ち: %2$d\n負け: %3$d\n引き分け: %4$d\n</string>
 </resources>
