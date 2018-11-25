@@ -11,7 +11,7 @@ public class JanKenPon {
     /**
       * CPUの出した手を格納
       */
-    public String randomAction;
+    public String cpuAction;
 
     /**
      * じゃんけんぽんを実行します
@@ -24,13 +24,13 @@ public class JanKenPon {
         int randomInt = r.nextInt(3); // 0以上3未満の数値をランダムに設定する
         switch (randomInt) {
             case 0:
-                rancomAction = "グー";
+                cpuAction = "グー";
                 break;
             case 1:
-                rancomAction = "チョキ";
+                cpuAction = "チョキ";
                 break;
             case 2:
-                rancomAction = "パー";
+                cpuAction = "パー";
                 break;
         }
 
@@ -38,31 +38,31 @@ public class JanKenPon {
         String matchResult;
         switch (userAction) {
             case "グー":
-                if (Objects.equals(randomAction, "グー")) {
+                if (Objects.equals(cpuAction, "グー")) {
                     matchResult = "分け";
-                } else if (Objects.equals(randomAction, "パー")) {
+                } else if (Objects.equals(cpuAction, "パー")) {
                     matchResult = "負け";
-                } else if (Objects.equals(randomAction, "チョキ")) {
+                } else if (Objects.equals(cpuAction, "チョキ")) {
                     matchResult = "勝ち";
                 }
                 break;
             case "パー":
                 // TODO: 以下 == を equals に変更する
-                if (randomAction == "パー") {
+                if (cpuAction == "パー") {
                     matchResult = "分け";
-                } else if (randomAction == "チョキ") {
+                } else if (cpuAction == "チョキ") {
                     matchResult = "負け";
-                } else if (randomAction == "グー") {
+                } else if (cpuAction == "グー") {
                     matchResult = "勝ち";
                     return matchResult;
                 }
                 break;
             case "チョキ":
-                if (randomAction == "チョキ") {
+                if (cpuAction == "チョキ") {
                     matchResult = "分け";
-                } else if (randomAction == "グー") {
+                } else if (cpuAction == "グー") {
                     matchResult = "負け";
-                } else if (randomAction == "パー") {
+                } else if (cpuAction == "パー") {
                     matchResult = "勝ち";
                 }
                 break;
