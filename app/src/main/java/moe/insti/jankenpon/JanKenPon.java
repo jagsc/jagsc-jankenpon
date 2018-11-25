@@ -1,45 +1,53 @@
 package moe.insti.jankenpon;
 
+import java.util.Objects;
 import java.util.Random;
 
+/**
+ * じゃんけんぽんを実行するクラス
+ */
 public class JanKenPon {
 
+    /**
+      * CPUの出した手を格納
+      */
     public String randomAction;
 
-    public JanKenPon() {
-
-    }
-
-    public String JanKenPon(String userAction) {
-        String matchResult = null;
-
-        //1と3の間にランダムで数字を選択し、その結果によってString型でCPU側のプレイを定義します
-        //これは独立したメソッドにした方がいいんですが無駄に複雑になります
+    /**
+     * じゃんけんぽんを実行します
+     * @param userAction ユーザーの選んだ手 ("グー" または "チョキ" または "パー")
+     * @return 結果 ("勝ち" または "負け" または "分け")
+     */
+    public String doJanKenPon(String userAction) {
+        // CPUの手を決定する。
         Random r = new Random();
-        int Low = 1;
-        int High = 4;
-        int Result = r.nextInt(High-Low) + Low;
-
-        if (Result == 1) {
-            randomAction = "グー";
-        } else if (Result == 2) {
-            randomAction = "パー";
-        } else if (Result == 3) {
-            randomAction = "チョキ";
+        int randomInt = r.nextInt(3); // 0以上3未満の数値をランダムに設定する
+        switch (randomInt) {
+            case 0:
+                rancomAction = "グー";
+                break;
+            case 1:
+                rancomAction = "チョキ";
+                break;
+            case 2:
+                rancomAction = "パー";
+                break;
         }
 
-        //どのボタンが押されてるかによってCPUのプレイと比べて試合の結果を決めます
+        // ユーザーの手とCPUの手に応じて勝敗を判定する
+        String matchResult;
         switch (userAction) {
             case "グー":
-                if (randomAction == "グー") {
+                if (Objects.equals(randomAction, "グー")) {
                     matchResult = "分け";
-                } else if (randomAction == "パー") {
+                } else if (Objects.equals(randomAction, "パー")) {
                     matchResult = "負け";
-                } else if (randomAction == "チョキ") {
+                } else if (Objects.equals(randomAction, "チョキ")) {
                     matchResult = "勝ち";
                 }
                 break;
             case "パー":
+                // TODO: 以下 == を equals に変更する
                 if (randomAction == "パー") {
                     matchResult = "分け";
                 } else if (randomAction == "チョキ") {
@@ -60,7 +68,8 @@ public class JanKenPon {
                 break;
         }
 
-        return matchResult; //その結果をリターンします
+        // 勝敗結果をリターンする
+        return matchResult;
     }
 
 }

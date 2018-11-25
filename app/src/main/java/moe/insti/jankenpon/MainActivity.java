@@ -14,7 +14,6 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private JanKenPon JanKenPon;
     private TextView textUser, textCpu, textResult;
     private Bitmap rockBitmap, scissorsBitmap, paperBitmap;
     private ImageView resultImageView;
@@ -58,18 +57,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //結果を表示するメソッド
-    public void showResult(String userAction) {
-        String result;
-        JanKenPon = new JanKenPon();
+    /**
+     * じゃんけんを実行し結果を表示する
+     */
+    public void executeJanKenPonAndShowResult(String userAction) {
+        JanKenPon janKenPon = new JanKenPon();
 
-        result = JanKenPon.JanKenPon(userAction);
+        String result = janKenPon.doJanKenPon(userAction);
         textUser.setText("あなたは" + userAction + "を選択しました。");
-        textCpu.setText("CPUが" + JanKenPon.randomAction + "を出しました。");
+        textCpu.setText("CPUが" + janKenPon.cpuAction + "を出しました。");
         textResult.setText("結果："+ result + "！");
 
         // 結果の画像を設定する
-        switch (JanKenPon.randomAction){
+        switch (janKenPon.cpuAction){
             case "グー":
                 resultImageView.setImageBitmap(rockBitmap);
                 break;
@@ -89,13 +89,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (button.getId()) {
             case R.id.buttonRock:
-                showResult("グー");
+                executeJanKenPonAndShowResult("グー");
                 break;
             case R.id.buttonScissors:
-                showResult("チョキ");
+                executeJanKenPonAndShowResult("チョキ");
                 break;
             case R.id.buttonPaper:
-                showResult("パー");
+                executeJanKenPonAndShowResult("パー");
                 break;
         }
     }
