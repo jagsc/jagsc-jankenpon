@@ -16,7 +16,7 @@ public class JanKenPon {
     /**
      * じゃんけんぽんを実行します
      * @param userAction ユーザーの選んだ手 ("グー" または "チョキ" または "パー")
-     * @return 結果 ("勝ち" または "負け" または "分け")
+     * @return 結果 ("かち" または "まけ" または "あいこ")
      */
     public String doJanKenPon(String userAction) {
         // CPUの手を決定する。
@@ -39,29 +39,29 @@ public class JanKenPon {
         switch (userAction) {
             case "グー":
                 if (Objects.equals(cpuAction, "グー")) {
-                    matchResult = "分け";
+                    matchResult = "あいこ";
                 } else if (Objects.equals(cpuAction, "パー")) {
-                    matchResult = "負け";
+                    matchResult = "まけ";
                 } else if (Objects.equals(cpuAction, "チョキ")) {
-                    matchResult = "勝ち";
+                    matchResult = "かち";
                 }
                 break;
             case "パー":
                 if (Objects.equals(cpuAction,"パー")) {
-                    matchResult = "分け";
+                    matchResult = "あいこ";
                 } else if (Objects.equals(cpuAction,"チョキ")) {
-                    matchResult = "負け";
+                    matchResult = "まけ";
                 } else if (Objects.equals(cpuAction,"グー")) {
-                    matchResult = "勝ち";
+                    matchResult = "かち";
                 }
                 break;
             case "チョキ":
                 if (Objects.equals(cpuAction,"チョキ")) {
-                    matchResult = "分け";
+                    matchResult = "あいこ";
                 } else if (Objects.equals(cpuAction,"グー")) {
-                    matchResult = "負け";
+                    matchResult = "まけ";
                 } else if (Objects.equals(cpuAction,"パー")) {
-                    matchResult = "勝ち";
+                    matchResult = "かち";
                 }
                 break;
         }
