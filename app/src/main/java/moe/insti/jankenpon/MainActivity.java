@@ -1,8 +1,5 @@
 package moe.insti.jankenpon;
 
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +7,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView textUser, textCpu, textResult;
-    private Bitmap rockBitmap, scissorsBitmap, paperBitmap;
     private ImageView resultImageView;
 
 
@@ -38,23 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rock.setOnClickListener(this);
         scissors.setOnClickListener(this);
         paper.setOnClickListener(this);
-
-        // 画像をassetsから読み込み
-        AssetManager assets = getResources().getAssets();
-
-        try {
-            InputStream inputStream = assets.open("rock.png");
-            rockBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-            inputStream = assets.open("scissors.png");
-            scissorsBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-            inputStream = assets.open("paper.png");
-            paperBitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -71,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 結果の画像を設定する
         switch (janKenPon.cpuAction){
             case "グー":
-                resultImageView.setImageBitmap(rockBitmap);
+                resultImageView.setImageResource(R.drawable.rock);
                 break;
             case "チョキ":
-                resultImageView.setImageBitmap(scissorsBitmap);
+                resultImageView.setImageResource(R.drawable.scissors);
                 break;
             case "パー":
-                resultImageView.setImageBitmap(paperBitmap);
+                resultImageView.setImageResource(R.drawable.paper);
                 break;
         }
     }
