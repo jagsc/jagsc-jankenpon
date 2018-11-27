@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * じゃんけんを実行し結果を表示する
      */
-    public void executeJanKenPonAndShowResult(String userAction) {
+    public void showResult(String userAction) {
         JanKenPon janKenPon = new JanKenPon();
 
         String result = janKenPon.doJanKenPon(userAction);
@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (button.getId()) {
             case R.id.buttonRock:
-                executeJanKenPonAndShowResult("グー");
+                showResult("グー");
                 break;
             case R.id.buttonScissors:
-                executeJanKenPonAndShowResult("チョキ");
+                showResult("チョキ");
                 break;
             case R.id.buttonPaper:
-                executeJanKenPonAndShowResult("パー");
+                showResult("パー");
                 break;
         }
     }

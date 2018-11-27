@@ -35,7 +35,7 @@ public class JanKenPon {
         }
 
         // ユーザーの手とCPUの手に応じて勝敗を判定する
-        String matchResult;
+        String matchResult = "";
         switch (userAction) {
             case "グー":
                 if (Objects.equals(cpuAction, "グー")) {
@@ -47,22 +47,20 @@ public class JanKenPon {
                 }
                 break;
             case "パー":
-                // TODO: 以下 == を equals に変更する
-                if (cpuAction == "パー") {
+                if (Objects.equals(cpuAction,"パー")) {
                     matchResult = "分け";
-                } else if (cpuAction == "チョキ") {
+                } else if (Objects.equals(cpuAction,"チョキ")) {
                     matchResult = "負け";
-                } else if (cpuAction == "グー") {
+                } else if (Objects.equals(cpuAction,"グー")) {
                     matchResult = "勝ち";
-                    return matchResult;
                 }
                 break;
             case "チョキ":
-                if (cpuAction == "チョキ") {
+                if (Objects.equals(cpuAction,"チョキ")) {
                     matchResult = "分け";
-                } else if (cpuAction == "グー") {
+                } else if (Objects.equals(cpuAction,"グー")) {
                     matchResult = "負け";
-                } else if (cpuAction == "パー") {
+                } else if (Objects.equals(cpuAction,"パー")) {
                     matchResult = "勝ち";
                 }
                 break;
