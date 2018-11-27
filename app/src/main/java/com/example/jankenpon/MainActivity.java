@@ -1,4 +1,4 @@
-package moe.insti.jankenpon;
+package com.example.jankenpon;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

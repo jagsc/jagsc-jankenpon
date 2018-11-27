@@ -1,4 +1,4 @@
-package moe.insti.jankenpon;
+package com.example.jankenpon;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package moe.insti.jankenpon;
+package com.example.jankenpon;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("moe.insti.jankenpon", appContext.getPackageName());
+        assertEquals("com.example.jankenpon", appContext.getPackageName());
     }
 }

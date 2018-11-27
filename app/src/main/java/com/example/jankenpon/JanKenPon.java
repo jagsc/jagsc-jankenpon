@@ -1,4 +1,4 @@
-package moe.insti.jankenpon;
+package com.example.jankenpon;
 
 import java.util.Objects;
 import java.util.Random;
