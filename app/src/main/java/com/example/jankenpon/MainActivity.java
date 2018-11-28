@@ -63,9 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //ボタンが押されると結果を表示するメソッド
     @Override
     public void onClick(View view) {
-        Button button = (Button) view;
-
-        switch (button.getId()) {
+        switch (view.getId()) {
             case R.id.buttonRock:
                 showResult("グー");
                 break;

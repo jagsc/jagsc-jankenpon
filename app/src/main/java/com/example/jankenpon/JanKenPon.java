@@ -3,14 +3,10 @@ package com.example.jankenpon;
 import java.util.Objects;
 import java.util.Random;
 
-/**
- * じゃんけんぽんを実行するクラス
- */
+// じゃんけんぽんを実行するクラス
 public class JanKenPon {
 
-    /**
-      * CPUの出した手を格納
-      */
+    // CPUの出した手を格納
     public String cpuAction;
 
     /**
